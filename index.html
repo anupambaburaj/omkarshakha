@@ -2,66 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activity Portal</title>
+    <title>Home - Activities</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; background-color: #f4f4f9; }
-        
-        /* Navigation Styling */
-        nav { background-color: #2c3e50; width: 100%; padding: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        ul { list-style: none; display: flex; justify-content: center; padding: 0; margin: 0; }
-        li { margin: 0 20px; }
-        a { color: white; text-decoration: none; font-weight: bold; cursor: pointer; transition: color 0.3s; }
-        a:hover { color: #3498db; }
-
-        /* Content Area */
-        #content-area { margin-top: 50px; text-align: center; padding: 40px; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 80%; max-width: 600px; }
-        h1 { color: #2c3e50; font-size: 2.5rem; }
-        p { color: #666; line-height: 1.6; }
+        body { font-family: sans-serif; text-align: center; background: #f4f4f4; margin: 0; }
+        nav { background: #333; padding: 1rem; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        nav a:hover { color: #ff9900; }
+        .hero { padding: 50px; }
     </style>
 </head>
 <body>
 
 <nav>
-    <ul>
-        <li><a onclick="showPage('Balagokulam')">Balagokulam</a></li>
-        <li><a onclick="showPage('Surya Namaskar')">Surya Namaskar</a></li>
-        <li><a onclick="showPage('Sewa')">Sewa</a></li>
-        <li><a onclick="showPage('Past Activities')">Past Activities</a></li>
-    </ul>
+    <a href="index.html">Home</a>
+    <a href="balagokulam.html">Balagokulam</a>
+    <a href="surya_namaskar.html">Surya Namaskar</a>
+    <a href="sewa.html">Sewa</a>
+    <a href="past_activities.html">Past Activities</a>
 </nav>
 
-<div id="content-area">
-    <h1 id="page-caption">Welcome</h1>
-    <p id="page-description">Please select a menu item above to view details.</p>
+<div class="hero">
+    <h1>Welcome to our Activity Portal</h1>
+    <p>Select a category from the menu to explore.</p>
 </div>
-
-<script>
-    function showPage(menuName) {
-        // Update the Caption
-        document.getElementById('page-caption').innerText = menuName;
-        
-        // Update the Description based on selection
-        const description = document.getElementById('page-description');
-        
-        switch(menuName) {
-            case 'Balagokulam':
-                description.innerText = "Focusing on children's values and cultural education.";
-                break;
-            case 'Surya Namaskar':
-                description.innerText = "The practice of Sun Salutation for physical and mental well-being.";
-                break;
-            case 'Sewa':
-                description.innerText = "Selfless service projects for the community.";
-                break;
-            case 'Past Activities':
-                description.innerText = "A look back at our previous events and milestones.";
-                break;
-            default:
-                description.innerText = "Select an activity to learn more.";
-        }
-    }
-</script>
 
 </body>
 </html>
