@@ -53,46 +53,47 @@ async function loadSheetData() {
             return row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
         });
 
-        const headerRow = document.getElementById('table-header');
         const tableBody = document.getElementById('table-body');
 
         // Clear existing content
-        headerRow.innerHTML = '';
         tableBody.innerHTML = '';
-
-        // Render Headers (First Row)
-        if (rows.length > 0) {
-            rows[0].forEach(text => {
-                const th = document.createElement('th');
-                th.textContent = text.replace(/^"|"$/g, "").trim(); 
-                headerRow.appendChild(th);
-            });
-        }
-
-        // Render Data Rows
+// We skip i=0 (the CSV header)
         for (let i = 1; i < rows.length; i++) {
-            if (rows[i].length < 2) continue; // Skip empty rows
+            if (rows[i].length < 5) continue; 
+
+            // Extract values (using 0-based indexing)
+            const col1 = rows[i][0].replace(/^"|"$/g, '').trim(); // Primary text
+            const col5 = rows[i][4].replace(/^"|"$/g, '').trim(); // WhatsApp Header text
             
             const tr = document.createElement('tr');
-            rows[i].forEach(cellText => {
-                const td = document.createElement('td');
-                
-                // Remove surrounding quotes from the CSV field
-                let cleanText = cellText.trim().replace(/^"|"$/g, '');
+            const td = document.createElement('td');
 
-                // Check if the text contains an HTML link tag
-                if (cleanText.toLowerCase().includes('<a href=')) {
-                    td.innerHTML = cleanText; 
-                } else {
-                    td.textContent = cleanText;
-                }
-                tr.appendChild(td);
-            });
+            // Construct the WhatsApp Message Structure
+            td.innerHTML = `
+                <div class="whatsapp-header">${col5}</div>
+                <div class="message-bubble">
+                    <span class="col-bold">${col1}</span>
+                    ${renderRemainingColumns(rows[i])}
+                </div>
+            `;
+            
+            tr.appendChild(td);
             tableBody.appendChild(tr);
         }
     } catch (err) {
-        console.error("Error loading data:", err);
+        console.error("Error:", err);
     }
 }
 
-loadSheetData();
+// Helper to render other columns (2, 3, 4) inside the bubble
+function renderRemainingColumns(rowArray) {
+    let html = '';
+    // Loop through indices 1, 2, 3 (Columns 2, 3, 4)
+    for (let j = 1; j <= 3; j++) {
+        if (rowArray[j]) {
+            let text = rowArray[j].trim().replace(/^"|"$/g, '');
+            html += `<div style="margin-top:5px;">${text}</div>`;
+        }
+    }
+    return html;
+}
