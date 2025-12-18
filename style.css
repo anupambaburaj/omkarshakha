@@ -40,21 +40,31 @@ main {
 h1 { color: #2c3e50; }
 p { line-height: 1.6; color: #444; font-size: 1.1rem; }
 
-/* Footer */
+//* Footer Section */
 footer {
     background-color: #333;
-    color: yellow;
+    /* Changed to an off-white for better readability on dark backgrounds */
+    color: #ecf0f1; 
     text-align: center;
-    padding: 20px 0;
+    /* Reduced vertical padding from 20px to 10px */
+    padding: 10px 0; 
     margin-top: auto;
 }
 
 footer a {
-    color: #3498db;
+    /* Kept the blue, but ensured it's bright enough for contrast */
+    color: #3498db; 
     text-decoration: none;
 }
 
+footer a:hover {
+    text-decoration: underline;
+}
+
 .footer-info {
-    margin: 5px 0;
-    font-size: 0.9rem;
+    /* Reduced margin from 5px to 2px to shrink total height */
+    margin: 2px 0;
+    font-size: 0.85rem;
+    /* Forces the text color to inherit from the footer's color: #ecf0f1 */
+    color: inherit; 
 }
