@@ -8,6 +8,9 @@ function getRandomColor() {
     return colors[Math.floor(Math.random() * colors.length)];
 }
 
+// Google Sheets Config
+const SPREADSHEET_ID = '1TQ43EAPutGvl75KovXx0wOtN979JDfAj_KBMIxxNeLQ';
+
 async function loadSheetData() {
     const table = document.getElementById('data-table');
     if (!table) return;
