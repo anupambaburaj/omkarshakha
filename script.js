@@ -25,3 +25,48 @@ const footerContent = `
 // Insert into the page
 document.getElementById('header-placeholder').innerHTML = headerContent;
 document.getElementById('footer-placeholder').innerHTML = footerContent;
+
+
+const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQfh8WhlDiSdrW5m0zyeh3ClHM8O6PUiwjpPGO-4BvGjhntZYDzcp6lLJ4cnpK5v4nbXuZkbE3mXXTY/pub?output=csv';
+
+async function loadSheetData() {
+    try {
+        const response = await fetch(sheetUrl);
+        const data = await response.text();
+        
+        // Split data into rows and cells
+        const rows = data.split('\n').map(row => row.split(','));
+        
+        const headerRow = document.getElementById('table-header');
+        const tableBody = document.getElementById('table-body');
+
+        // 1. Clear existing content
+        headerRow.innerHTML = '';
+        tableBody.innerHTML = '';
+
+        // 2. Create Headers (from the first row of the sheet)
+        rows[0].forEach(columnText => {
+            const th = document.createElement('th');
+            th.textContent = columnText;
+            headerRow.appendChild(th);
+        });
+
+        // 3. Create Data Rows
+        for (let i = 1; i < rows.length; i++) {
+            if (rows[i].length < 2) continue; // Skip empty rows
+            
+            const tr = document.createElement('tr');
+            rows[i].forEach(cellText => {
+                const td = document.createElement('td');
+                td.textContent = cellText;
+                tr.appendChild(td);
+            });
+            tableBody.appendChild(tr);
+        }
+    } catch (error) {
+        console.error('Error fetching sheet data:', error);
+    }
+}
+
+// Initialize the function
+loadSheetData();
