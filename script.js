@@ -97,3 +97,4 @@ function renderRemainingColumns(rowArray) {
     }
     return html;
 }
+loadSheetData();
