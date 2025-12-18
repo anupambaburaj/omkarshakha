@@ -119,66 +119,50 @@ footer a {
     background-color: #f1f1f1;
     cursor: pointer;
 }
-/* Container for the table to ensure it looks like a chat screen */
+
+/* WhatsApp Chat Background */
 #data-table {
     width: 100%;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 0 auto;
     border-collapse: separate;
-    border-spacing: 0 15px; /* Adds space between "messages" */
-    background-color: #e5ddd5; /* Classic WhatsApp background color */
-    padding: 20px;
-    font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+    border-spacing: 0 15px;
+    background-color: #e5ddd5; /* Classic WhatsApp Beige */
+    padding: 10px;
 }
 
-/* Hide the table header (WhatsApp doesn't have column headers) */
-#table-header {
-    display: none;
-}
-
-/* Style each row as a message bubble */
-#table-body tr {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-}
-
-/* Style the cells inside the row */
-#table-body td {
+/* Header Bar */
+.whatsapp-header {
+    color: white;
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border-radius: 10px 10px 0 0; /* Rounded top only */
     display: block;
-    max-width: 80%;
-    padding: 8px 12px;
-    background-color: #ffffff; /* White bubble for received message */
-    border-radius: 8px;
-    box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
-    position: relative;
-    font-size: 14.5px;
-    color: #303030;
+}
+
+/* Message Bubble */
+.message-bubble {
+    background-color: white;
+    padding: 12px 15px;
+    border-radius: 0 0 10px 10px; /* Rounded bottom only */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    border-top: 1px solid #f0f0f0;
+}
+
+/* Column 1 Bold Styling */
+.col-bold {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #075e54; /* Dark green for the main title */
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Remaining columns text */
+.col-data {
+    color: #4a4a4a;
+    font-size: 0.95rem;
+    margin-top: 3px;
     line-height: 1.4;
-    margin-right: auto; /* Align to the left like a received message */
-}
-
-/* If you want every second message to look like a "sent" message (Green) */
-#table-body tr:nth-child(even) td {
-    background-color: #dcf8c6; /* WhatsApp light green */
-    margin-right: 0;
-    margin-left: auto; /* Align to the right */
-}
-
-/* Styling links inside the "bubbles" */
-#table-body td a {
-    color: #027eb5;
-    text-decoration: none;
-    font-weight: 600;
-    display: block;
-    margin-top: 5px;
-    word-break: break-all;
-}
-
-/* Adding a tiny "timestamp" feel to the last cell of each row */
-#table-body td:last-child {
-    font-size: 11px;
-    color: #888;
-    text-align: right;
-    margin-top: 4px;
 }
