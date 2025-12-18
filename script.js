@@ -36,12 +36,25 @@ async function loadSheetData() {
     const gid = table.getAttribute('data-gid'); // Detects the GID from HTML
     
     // Construct the specific CSV URL for that tab
-    const url = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=${gid}`;
-
+const url = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=${gid}`;
+    
     try {
         const response = await fetch(url);
-        const data = await response.text();
-        const rows = data.split('\n').map(row => row.split(','));
+        const csvText = await response.text();
+
+        // PapaParse automatically handles commas inside quotes and removes the quotes for you
+        const results = Papa.parse(csvText, {
+            header: false, // Set to true if you want objects instead of arrays
+            skipEmptyLines: true
+        });
+
+        const rows = results.data; // This is now a clean array of arrays
+        
+        // ... proceed with your table rendering logic using rows ...
+    } catch (err) {
+        console.error(err);
+    }
+
 
         const headerRow = document.getElementById('table-header');
         const tableBody = document.getElementById('table-body');
@@ -69,16 +82,13 @@ async function loadSheetData() {
 				td.innerHTML = cleanText;
 			} else {
 				// Use textContent for normal text to keep it simple and safe
-					td.textContent = cleanText;
+				td.textContent = cleanText;
 		}
     
     tr.appendChild(td);
 });
             tableBody.appendChild(tr);
         }
-    } catch (err) {
-        console.error("Error loading data:", err);
-    }
 }
 
 loadSheetData();
