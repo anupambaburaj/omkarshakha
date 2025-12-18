@@ -57,23 +57,18 @@ async function loadSheetData() {
             
             const tr = document.createElement('tr');
 			rows[i].forEach(cellText => {
-    const td = document.createElement('td');
-    const cleanText = cellText.replace(/"/g, "").trim(); // Remove quotes and extra spaces
+			const td = document.createElement('td');
+			const cleanText = cellText.replace(/^"|"$/g, "").trim(); // Remove surrounding quotes
 
-    // Check if the text is a URL
-    if (cleanText.startsWith('http')) {
-        const link = document.createElement('a');
-        link.href = cleanText;
-        link.textContent = "View Link"; // Or use cleanText to show the URL
-        link.target = "_blank";         // Opens in a new tab
-        td.appendChild(link);
-    } else {
-        td.textContent = cleanText;
-    }
-    
-    tr.appendChild(td);
-	});
-
+			// Check if the text contains an HTML anchor tag
+			if (cleanText.includes('<a href=')) {
+				td.innerHTML = cleanText; // This renders the actual clickable link
+			} else {
+				td.textContent = cleanText; // This keeps regular text safe
+			}
+			
+			tr.appendChild(td);
+		});
             tableBody.appendChild(tr);
         }
     } catch (error) {

@@ -82,6 +82,18 @@ footer a {
     font-weight: bold;
 }
 
+/* Style the links inside your table cells */
+.custom-table td a {
+    color: #3498db;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.custom-table td a:hover {
+    text-decoration: underline;
+    color: #e67e22; /* Changes to orange on hover to match your footer */
+}
+
 /* Cell Padding */
 .custom-table th,
 .custom-table td {
