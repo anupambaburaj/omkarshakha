@@ -1,3 +1,172 @@
+/* General Layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+}
+
+/* Header & Menu */
+header {
+    background-color: #2c3e50;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+header a:hover {
+    color: #3498db;
+}
+
+/* Main Content Area */
+main {
+    flex: 1;
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 { color: #2c3e50; }
+p { line-height: 1.6; color: #444; font-size: 1.1rem; }
+
+/* Final Footer Fix */
+footer {
+    background-color: #ff8c00 !important; /* Bright Orange */
+    color: #ffffff !important;           /* Force White Text */
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+    display: block;                      /* Ensures the footer box actually renders */
+    width: 100%;
+}
+
+.footer-info {
+    margin: 2px 0;
+    font-size: 0.85rem;
+    color: #ffffff !important;           /* Ensures text is white */
+}
+
+footer a {
+    color: #ffffff !important;
+    text-decoration: underline;
+}
+
+/* Table Layout */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse; /* Prevents double borders */
+    margin: 25px 0;
+    font-size: 0.9rem;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden; /* Makes rounded corners visible */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styling */
+.custom-table thead tr {
+    background-color: #2c3e50; /* Matches your header color */
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Style the links inside your table cells */
+.custom-table td a {
+    color: #3498db;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.custom-table td a:hover {
+    text-decoration: underline;
+    color: #e67e22; /* Changes to orange on hover to match your footer */
+}
+
+/* Cell Padding */
+.custom-table th,
+.custom-table td {
+    padding: 12px 15px;
+}
+
+/* Zebra Striping (Alternating Rows) */
+.custom-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.custom-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+/* Last Row Border */
+.custom-table tbody tr:last-of-type {
+    border-bottom: 2px solid #2c3e50;
+}
+
+/* Hover effect for rows */
+.custom-table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* WhatsApp Chat Background */
+#data-table {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    background-color: #e5ddd5; /* Classic WhatsApp Beige */
+    padding: 10px;
+}
+
+/* Header Bar */
+.whatsapp-header {
+    color: white;
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border-radius: 10px 10px 0 0; /* Rounded top only */
+    display: block;
+}
+
+/* Message Bubble */
+.message-bubble {
+    background-color: white;
+    padding: 12px 15px;
+    border-radius: 0 0 10px 10px; /* Rounded bottom only */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    border-top: 1px solid #f0f0f0;
+}
+
+/* Column 1 Bold Styling */
+.col-bold {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #075e54; /* Dark green for the main title */
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Remaining columns text */
+.col-data {
+    color: #4a4a4a;
+    font-size: 0.95rem;
+    margin-top: 3px;
+    line-height: 1.4;
+}
+
 /* The main container background */
 main {
     background-color: #e5ddd5; /* WhatsApp Beige */
