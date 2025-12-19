@@ -1,48 +1,55 @@
-/* --- 1. Global Layout Fixes --- */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f9f9f9;
-}
 
-main {
-    flex: 1;
-    padding: 20px;
-    background-color: #e5ddd5; /* WhatsApp Chat Background */
-    background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
-    background-attachment: fixed;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* Header & Menu */
+/* --- Header & Menu Fix --- */
 header {
     background-color: #2c3e50;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     text-align: center;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Modern way to space links */
 }
 
 header a {
     color: white;
     text-decoration: none;
-    margin: 0 15px;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 14px;
+    transition: color 0.3s ease;
 }
 
 header a:hover {
     color: #3498db;
 }
 
+/* --- Main Title Fix --- */
+.page-title {
+    color: #075e54; /* WhatsApp Dark Green */
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #e5ddd5;
+    background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+    background-attachment: fixed;
+    /* Remove text-align: center from here */
+}
+
 /* --- 2. Chat Table Reset --- */
 #data-table {
     width: 100%;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 20px auto;
     border-collapse: separate;
     border-spacing: 0 12px;
 }
