@@ -163,8 +163,7 @@ footer a {
 #table-body tr:nth-child(even) td {
     background-color: #dcf8c6; /* WhatsApp Light Green bubble */
     border-radius: 15px 0 15px 15px;
-    margin-left: 40px; /* Gap on the left */
-	text-align: right;
+    text-align: right;
 }
 
 /* Right Tail */
